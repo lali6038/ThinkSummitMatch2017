@@ -124,7 +124,7 @@ $(function() {
 
 		
 
-						var baseURL='http://api.nytimes.com/svc/mostpopular/v2/mostemailed/arts/1.json?api-key=55d0a13fda6948b3b0d0df93380d7cc9'; 
+						var baseURL='https://api.nytimes.com/svc/mostpopular/v2/mostemailed/arts/1.json?api-key=55d0a13fda6948b3b0d0df93380d7cc9'; 
 						$.get(baseURL, function(response){
 							var title= response.results[0].title;
 							var author= response.results[0].byline;
