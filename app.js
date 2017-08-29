@@ -111,16 +111,16 @@ $(function() {
 		$('#results').show();
 		event.preventDefault();
 
-		// var baseURL='https://api.nytimes.com/svc/mostpopular/v2/mostemailed/arts/1.json?api-key=55d0a13fda6948b3b0d0df93380d7cc9';
-		//
-		// $.get(baseURL, function(response){
-		// 	var title= response.results[0].title;
-		// 	var author= response.results[0].byline;
-		// 	var url= response.results[0].url;
-		//
-		// 	$('#events').append(title + ', ' + author);
-    //   $('#event-link').attr('href', url);
-		// });
+		var baseURL='https://api.nytimes.com/svc/mostpopular/v2/mostemailed/arts/1.json?api-key=55d0a13fda6948b3b0d0df93380d7cc9';
+
+		$.get(baseURL, function(response){
+			var title= response.results[0].title;
+			var author= response.results[0].byline;
+			var url= response.results[0].url;
+
+			$('#events').append(title + ', ' + author);
+      $('#event-link').attr('href', url);
+		});
 
 		$.ajax({
 		  async       : true,
