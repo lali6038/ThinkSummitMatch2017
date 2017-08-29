@@ -138,22 +138,31 @@ $(function() {
 				          $('#event-link').attr('href', url);  
 				         
 				      
-				           						
+				           	
+
+
+
+
+				           	var options = {
+							  "async": true,
+							  "crossDomain": true,
+							  "url": 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+NewYork&key=AIzaSyArlJ23xVZXxcaljwsebqxa3ptCmYPtPZM',
+							  "method": "GET",
+							  
+							}
+
+							$.ajax(options).done(function(response) {
+							  var name= response.results[0].name;
+		                      var address=response.results[0].formatted_address; 
+		                      var rating=response.results[0].rating; 
+
+		              
+
+		                         $('#eatery').html(name + ', ' + address + ', ' + rating + '  ⭐️ rating ' ); 
+							});					
        
 
-                       var eateryURL='https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+NewYork&key=AIzaSyArlJ23xVZXxcaljwsebqxa3ptCmYPtPZM';
-                    	$.get(eateryURL, function(response){
-                         var name= response.results[0].name;
-                         var address=response.results[0].formatted_address; 
-                         var rating=response.results[0].rating; 
-
-              
-
-                         $('#eatery').html(name + ', ' + address + ', ' + rating + '  ⭐️ rating ' );  
-
-
-			 
-		})
+                
                     })
 })
 
