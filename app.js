@@ -52,7 +52,11 @@ $(function() {
 				'api-key' : '55d0a13fda6948b3b0d0df93380d7cc9'
 			},
 			headers     : {
-				'Access-Control-Allow-Origin' : '*'
+				'Accept' : "*",
+				'Content-Type' : "*",
+				'X-Forwarded-For' : "*",
+				'X-Prototype-Version' : "*",
+				'X-Requested-With' : "*"
 			},
 			success     : function(response) {
 				var randomIdx = getRandomIdx(response.results);
