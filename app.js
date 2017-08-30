@@ -118,6 +118,7 @@ $(function() {
 		$.ajax({
 			async       : true,
 			crossDomain : true,
+			headers     : {"Access-Control-Allow-Origin":"*"},
 			url         : 'https://api.nytimes.com/svc/mostpopular/v2/mostemailed/arts/1.json',
 			method      : 'GET',
 			data        : {
