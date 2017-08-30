@@ -43,8 +43,18 @@ $(function() {
 		swiping.hide();
 		results.show();
 
-		$.get('https://api.nytimes.com/svc/mostpopular/v2/mostemailed/arts/1.json?api-key=55d0a13fda6948b3b0d0df93380d7cc9',
-			function(response) {
+		$.ajax({
+			async       : true,
+			crossDomain : true,
+			url         : 'https://api.nytimes.com/svc/mostpopular/v2/mostemailed/arts/1.json',
+			method      : 'GET',
+			data        : {
+				'api-key' : '55d0a13fda6948b3b0d0df93380d7cc9'
+			},
+			headers     : {
+				'Access-Control-Allow-Origin' : '*'
+			},
+			success     : function(response) {
 				var randomIdx = getRandomIdx(response.results);
 				var title     = response.results[randomIdx].title;
 				var author    = response.results[randomIdx].byline;
@@ -52,7 +62,8 @@ $(function() {
 
 				$('#events').append(title + ', ' + author);
 				$('#event-link').attr('href', url);
-			});
+			}
+		});
 
 		callGooglePlaces();
 	});
@@ -68,38 +79,12 @@ $(function() {
 
 	function addDislikeClickEventActions(event) {
 		event.preventDefault();
-<<<<<<< HEAD
 		$('#results-' + event.data + '-dislike').show();
 		$('#results-' + event.data + '-like').hide();
 		$('#question-' + event.data).animate({right: '0px', opacity: 0.0 });
 	  $('#dislike-' + event.data).animate({right: '0px', opacity: 0.0 });
 	  $('#like-' + event.data).animate({right: '0x', opacity: 0.0 });
 	}
-=======
-		$('#results').show();
-
-		$.ajax({
-			async       : true,
-			crossDomain : true,
-			headers     : {"Access-Control-Allow-Origin":"*"},
-			url         : 'https://api.nytimes.com/svc/mostpopular/v2/mostemailed/arts/1.json',
-			method      : 'GET',
-			data        : {
-				'api-key' : '55d0a13fda6948b3b0d0df93380d7cc9'
-			},
-			success     : function(response) {
-				var title  = response.results[0].title;
-				var author = response.results[0].byline;
-				var url    = response.results[0].url;
-
-				$('#events').append(title + ', ' + author);
-				$('#event-link').attr('href', url);
-			}
-		});
-
-		callGooglePlaces();
-	});
->>>>>>> 54076ddc58c5b6a0ffd8791167c66bf6e941b26c
 
 	function callGooglePlaces() {
 		var dreamDowntown = new google.maps.LatLng(40.7422, -74.0035);
