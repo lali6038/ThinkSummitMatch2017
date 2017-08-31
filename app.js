@@ -1,4 +1,6 @@
 $(function() {
+	var database = firebase.database();
+	var rsvpRef = database.ref('/questionnaire');
 	var questionnaire = $('#questionnaire');
 	var swiping       = $('#swiping');
 	var results       = $('#results');
@@ -22,6 +24,14 @@ $(function() {
 		event.preventDefault();
 		questionnaire.hide();
 		swiping.show();
+		var name = $('#name').val();
+	    	var company = $('#Company').val();
+	    	var ESP = $('#ESP').val();
+	    	var gains = $('#gains').val();
+	    	var vertical = $('#vertical').val();
+		console.log("Values", name, company, ESP, gains, vertical);
+		var newItem = rsvpRef.push();
+	    newItem.set({ name: name, Company: company, ESP: ESP, Gains: gains, Vertical: vertical });
 	});
 
 	$('#Compliment').on('click', function(event){
