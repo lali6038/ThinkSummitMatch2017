@@ -76,18 +76,14 @@ $(function() {
 		event.preventDefault();
 		$('#results-' + event.data + '-like').show();
 		$('#results-' + event.data + '-dislike').hide();
-		$('#question-' + event.data).animate({left: '0px', opacity: 0.0 });
-		$('#like-' + event.data).animate({left: '0px', opacity: 0.0 });
-	  $('#dislike-' + event.data).animate({left: '0px', opacity: 0.0 });
+		$('#question-' + event.data +  ' *').animate({margin: '0', padding: '0', height: '0px', left: '0px', opacity: 0.0 });
 	}
 
 	function addDislikeClickEventActions(event) {
 		event.preventDefault();
 		$('#results-' + event.data + '-dislike').show();
 		$('#results-' + event.data + '-like').hide();
-		$('#question-' + event.data).animate({right: '0px', opacity: 0.0 });
-	  $('#dislike-' + event.data).animate({right: '0px', opacity: 0.0 });
-	  $('#like-' + event.data).animate({right: '0x', opacity: 0.0 });
+		$('#question-' + event.data +  ' *').animate({margin: '0', padding: '0', height: '0px', left: '0px', opacity: 0.0 });
 	}
 
 	function callGooglePlaces() {
